@@ -1,24 +1,19 @@
 {
-  "name": "turf-node-example",
-  "version": "2.0.0",
-  "description": "an example of using turf with node to run a simple processing script",
+  "name": "nodelightning",
+  "version": "1.0.0",
+  "description": "Node js for geospatial analysis",
   "main": "index.js",
-  "scripts": {},
-  "keywords": [
-    "turf",
-    "node",
-    "example",
-    "turfjs",
-    "gis",
-    "geospatial"
-  ],
-  "author": "Tom MacWright",
-  "license": "ISC",
-  "dependencies": {
-    "@turf/turf": "^4.3.1"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:Turfjs/turf-node-example.git"
-  }
+    "url": "git+https://github.com/blakegards/nodeLightning.git"
+  },
+  "author": "Original Author Tom MackWrite",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blakegards/nodeLightning/issues"
+  },
+  "homepage": "https://github.com/blakegards/nodeLightning#readme"
 }
