@@ -1,22 +1,36 @@
 {
-  "name": "nodelightning",
-  "version": "1.0.0",
-  "description": "node js for spatial processing",
+  "name": "turf-intersect",
+  "version": "1.4.2",
+  "description": "find the intersection of spatial features",
   "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test/test.js",
+    "doc": "dox -r < index.js | doxme --readme > README.md"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/blakegards/nodeLightning.git"
+    "url": "git://github.com/Turfjs/turf-intersect.git"
   },
-  "author": "",
+  "keywords": [
+    "turf",
+    "gis",
+    "intersect"
+  ],
+  "author": "Morgan Herlocker",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/blakegards/nodeLightning/issues"
+    "url": "https://github.com/Turfjs/turf-intersect/issues"
   },
-  "homepage": "https://github.com/blakegards/nodeLightning#readme"
+  "homepage": "https://github.com/Turfjs/turf-intersect",
+  "devDependencies": {
+    "benchmark": "^1.0.0",
+    "glob": "~4.3.5",
+    "tape": "~3.5.0",
+    "dox": "^0.6.1",
+    "doxme": "^1.4.3"
+  },
+  "dependencies": {
+    "jsts": "^0.15.0",
+    "turf": "^3.0.14"
+  }
 }
