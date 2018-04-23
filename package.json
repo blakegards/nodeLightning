@@ -1,0 +1,22 @@
+{
+  "name": "nodelightning",
+  "version": "1.0.0",
+  "description": "node js for spatial processing",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blakegards/nodeLightning.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blakegards/nodeLightning/issues"
+  },
+  "homepage": "https://github.com/blakegards/nodeLightning#readme"
+}
