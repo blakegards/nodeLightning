@@ -1,36 +1,32 @@
 {
-  "name": "turf-intersect",
-  "version": "1.4.2",
-  "description": "find the intersection of spatial features",
-  "main": "index.js",
+  "name": "nodelightning",
+  "version": "1.0.0",
+  "description": "Uses node.js and turf module to analyise GeoJSON and check if a StormCell overlaps the Cambodian commune file. Prints a list of affected communes, if any.",
+  "main": "process_v1.js",
+  "dependencies": {
+    "async": "^2.6.0",
+    "gm": "^1.23.1",
+    "jsts": "^0.15.0",
+    "turf": "^3.0.14",
+    "xml2js": "^0.4.19"
+  },
+  "devDependencies": {},
   "scripts": {
-    "test": "node test/test.js",
-    "doc": "dox -r < index.js | doxme --readme > README.md"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/Turfjs/turf-intersect.git"
+    "url": "git+https://github.com/blakegards/nodeLightning.git"
   },
   "keywords": [
-    "turf",
     "gis",
-    "intersect"
+    "spatial",
+    "turf"
   ],
-  "author": "Morgan Herlocker",
+  "author": "Blake Gardiner",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Turfjs/turf-intersect/issues"
+    "url": "https://github.com/blakegards/nodeLightning/issues"
   },
-  "homepage": "https://github.com/Turfjs/turf-intersect",
-  "devDependencies": {
-    "benchmark": "^1.0.0",
-    "glob": "~4.3.5",
-    "tape": "~3.5.0",
-    "dox": "^0.6.1",
-    "doxme": "^1.4.3"
-  },
-  "dependencies": {
-    "jsts": "^0.15.0",
-    "turf": "^3.0.14"
-  }
+  "homepage": "https://github.com/blakegards/nodeLightning#readme"
 }
