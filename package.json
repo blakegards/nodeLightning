@@ -5,10 +5,13 @@
   "main": "process_v1.js",
   "dependencies": {
     "async": "^2.6.0",
+    "dweetio": "0.0.1",
     "gm": "^1.23.1",
     "jsts": "^0.15.0",
+    "node-dweetio": "0.0.11",
     "turf": "^3.0.14",
-    "xml2js": "^0.4.19"
+    "xml2js": "^0.4.19",
+    "xml2js-parser": "^1.1.1"
   },
   "devDependencies": {},
   "scripts": {
