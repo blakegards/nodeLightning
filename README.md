@@ -1,10 +1,9 @@
-# DEPRECATED - replaced with [`@turf/intersect`](https://github.com/Turfjs/turf/tree/master/packages/turf-intersect)
-# turf-intersect
 
-[![build status](https://secure.travis-ci.org/Turfjs/turf-intersect.png)](http://travis-ci.org/Turfjs/turf-intersect)
+find the intersection of two features.
 
-find the intersection of spatial features
+default setup is for Cambodia Commune Polygon *vs* Earth Networks JSON Stormfront data.
 
+Uses the turf js engine - https://github.com/Turfjs/turf
 
 ### `turf.intersect(poly1, poly2)`
 
@@ -86,5 +85,3 @@ $ npm install @turf/intersect
 ```sh
 $ npm test
 ```
-
-
