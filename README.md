@@ -13,6 +13,9 @@
  2. Overlays this layer with the existing Cambodia Communes dataset (JSON format)
  3. Outputs communes within the storm warning-area polygon (if any!) to a dweet.io web page
 		results visible for 24hr on dweet.io (there is a character limit of 2000 chars).
+		
+		
+![alt text](https://raw.githubusercontent.com/blakegards/nodeLightning/masteroverview.png)
 ---------------------------------------------------------------------------------------------
 ### PARAMETERS
  #### CambodiaCommunes
@@ -100,17 +103,3 @@ var intersection = turf.intersect(poly1, poly2);
 
 ```
 **Returns** `Feature.<Polygon>,Feature.<MultiLineString>`, if `poly1` and `poly2` overlap, returns a Polygon feature representing the area they overlap; if `poly1` and `poly2` do not overlap, returns `undefined`; if `poly1` and `poly2` share a border, a MultiLineString of the locations where their borders are shared
-
-## Installation
-
-Requires [nodejs](http://nodejs.org/).
-
-```sh
-$ npm install @turf/intersect
-```
-
-## Tests
-
-```sh
-$ npm test
-```
