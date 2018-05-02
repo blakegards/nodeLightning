@@ -1,6 +1,15 @@
 # nodeLightning
 
 ---------------------------------------------------------------------------------------------
+### ABOUT
+ 1. Reads in Earth Networks JSON file dropped into an amazon S3 bucket.
+ 2. Reformats to a JSON object, which can be used with the Turf javascript library.
+ 3. Overlays this layer with the existing Cambodia Communes dataset (JSON format)
+ 4. Outputs communes within the storm warning-area polygon (if any!) to a dweet.io web page
+		results visible for 24hr on dweet.io (there is a character limit of 2000 chars).
+		
+![overview](https://raw.githubusercontent.com/blakegards/nodeLightning/master/overview.png)
+---------------------------------------------------------------------------------------------
 ### HOW TO INSTALL & RUN ON AWS
 - Clone/Download this repo
 - Put everything in a zip file
@@ -18,16 +27,6 @@
 - turf (use 'npm install turf') - http://turfjs.org
 - xml2js (use 'npm install xml2js') 
 - dweetio (use 'npm install node-dweetio')
----------------------------------------------------------------------------------------------
-### ABOUT
- 1. Reads in Earth Networks JSON file and reformats to a JSON object, which can be
- 		used with the Turf javascript library.
- 2. Overlays this layer with the existing Cambodia Communes dataset (JSON format)
- 3. Outputs communes within the storm warning-area polygon (if any!) to a dweet.io web page
-		results visible for 24hr on dweet.io (there is a character limit of 2000 chars).
-		
-		
-![overview](https://raw.githubusercontent.com/blakegards/nodeLightning/master/overview.png)
 ---------------------------------------------------------------------------------------------
 ### PARAMETERS
  #### CambodiaCommunes
