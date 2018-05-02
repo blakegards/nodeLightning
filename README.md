@@ -15,7 +15,7 @@
 		results visible for 24hr on dweet.io (there is a character limit of 2000 chars).
 		
 		
-![alt text](https://raw.githubusercontent.com/blakegards/nodeLightning/masteroverview.png)
+![overview](https://raw.githubusercontent.com/blakegards/nodeLightning/master/overview.png)
 ---------------------------------------------------------------------------------------------
 ### PARAMETERS
  #### CambodiaCommunes
