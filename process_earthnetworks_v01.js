@@ -48,32 +48,40 @@ var AlertIssuedUTC;
 exports.handler = function(event, context, callback) {
 	
 	
+try{
 	//Read event from bucket.
 	var srcBucket = event.Records[0].s3.bucket.name;
 	// Object key may have spaces or unicode non-ASCII characters.
-    var srcKey = decodeURIComponent(event.Records[0].s3.object.key.replace(/\+/g, " "));  
+	var srcKey = decodeURIComponent(event.Records[0].s3.object.key.replace(/\+/g, " "));  
 	
 	// Infer the correct file type.
-    var typeMatch = srcKey.match(/\.([^.]*)$/);
-    if (!typeMatch) {
-        callback("Could not determine the file type.");
-        return;
-    }
-    var fileType = typeMatch[1];
-    if (fileType != "json") {
-        callback('Unsupported file type, expecing JSON!');
-        return;
-    }
+	var typeMatch = srcKey.match(/\.([^.]*)$/);
+	if (!typeMatch) {
+		callback("Could not determine the file type.");
+		return;
+	}
+	var fileType = typeMatch[1];
+	if (fileType != "json") {
+		callback('Unsupported file type, expecing JSON!');
+		return;
+	}
+}
+catch(err) {
+	dweetio.dweet_for("PINLightningReport", {Status:"Error in event processing: " + err}, function(err, dweet){
+	console.log("Check the output at: https://dweet.io/get/latest/dweet/for/PINLightningReport (the dweet limit is 2000chars)");
+	})
+}
 		
-	 // Download the json file from S3, analyize it.
-    async.waterfall([
-        function download(next) {
-            // Download the file from S3 into a buffer.
-            s3.getObject({Bucket: srcBucket, Key: srcKey}, next);
-            },
-        function transform(response, next) {
+ // Download the json file from S3, analyize it.
+async.waterfall([
+	function download(next) {
+		// Download the file from S3 into a buffer.
+		s3.getObject({Bucket: srcBucket, Key: srcKey}, next);
+		},
+	function transform(response, next) {
+		try {
 			const EarthNetworkDump = JSON.parse(response.Body); // single polygon
-            console.log("Incoming Alert from Earth Networks. Alert Type: " + EarthNetworkDump.AlertType);
+			console.log("Incoming Alert from Earth Networks. Alert Type: " + EarthNetworkDump.AlertType);
 			//First process the Earthnetworks JSON file.
 			var xml = EarthNetworkDump.RawMessage;
 			AlertType = EarthNetworkDump.AlertTypeName
@@ -97,29 +105,38 @@ exports.handler = function(event, context, callback) {
 				}
 				ENWarningPoly = turf.polygon([jenga], { name: 'WarningPoly' });
 				console.log("Warning Polygon Created.");
-				})
-			//call function to perform the intersection.	
-			process(ENWarningPoly);
-		}
-			], 
-			
-		function (err) {
-					if (err) {
-						console.error(
-							'Unable to analyze ' + srcBucket + '/' + srcKey +
-							' due to an error: ' + err
-						);
-					} else {
-						console.log(
-							'Successfully analyzed the file ' + srcBucket + '/' + srcKey
-						);
-				}
+				})				
+			}
+		catch(err) {
+					dweetio.dweet_for("PINLightningReport", {Status:"Error in function [transform]: " + err}, function(err, dweet){
+					console.log("Check the output at: https://dweet.io/get/latest/dweet/for/PINLightningReport (the dweet limit is 2000chars)");
+						})
+					}
 
-				callback(null, "Error");
-        }
-    )
+		//call function to perform the intersection.	
+		process(ENWarningPoly);
+	}
+		], 
+		
+	function (err) {
+				if (err) {
+					console.error(
+						'Unable to analyze ' + srcBucket + '/' + srcKey +
+						' due to an error: ' + err
+					);
+				} else {
+					console.log(
+						'Successfully analyzed the file ' + srcBucket + '/' + srcKey
+					);
+			}
 
-	function process(ENWarningPoly) {
+			callback(null, "Error");
+	}
+)
+
+function process(ENWarningPoly) {
+		
+		try{
 			var responseData = [];
 			console.log("Now checking for overlapping Cambodian Communes....");
 			var cntIntersect = 0
@@ -147,5 +164,12 @@ exports.handler = function(event, context, callback) {
 			dweetio.dweet_for("PINLightningReport", {ReportTime:utctime,ENAlertType:AlertType,ENAlertTime:AlertIssuedUTC,CommunesAnalysed:i,CommunesAtRisk:(cntIntersect),Report:{responseData}}, function(err, dweet){
 			console.log("Check the output at: https://dweet.io/get/latest/dweet/for/PINLightningReport (the dweet limit is 2000chars)");
 			})	
-	};
+		}
+		catch(err) {
+			dweetio.dweet_for("PINLightningReport", {Status:"Error in function [process]: " + err}, function(err, dweet){
+			console.log("Check the output at: https://dweet.io/get/latest/dweet/for/PINLightningReport (the dweet limit is 2000chars)");
+			})
+		}
+
+};
 }
