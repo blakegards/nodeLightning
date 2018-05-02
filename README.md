@@ -7,12 +7,13 @@
 - xml2js (use 'npm install xml2js') 
 - dweetio (use 'npm install node-dweetio')
 ---------------------------------------------------------------------------------------------
+### About
  1. Reads in Earth Networks JSON file and reformats to a JSON object, which can be
  		used with the Turf javascript library.
  2. Overlays this layer with the existing Cambodia Communes dataset (JSON format)
  3. Outputs communes within the storm warning-area polygon (if any!) to a dweet.io web page
 		results visible for 24hr on dweet.io (there is a character limit of 2000 chars).
-
+---------------------------------------------------------------------------------------------
 ### PARAMETERS
  #### CambodiaCommunes
 A geojson export of the commune shapefile. It has been simplified
@@ -35,8 +36,8 @@ are approximate.
 			dweet.io data is deleted after 24hrs.
 
 			
-//*********************************************************************************************
-
+---------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------
 			
 Find the intersection of two features.
 
