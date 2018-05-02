@@ -1,6 +1,18 @@
 # nodeLightning
 
 ---------------------------------------------------------------------------------------------
+### HOW TO INSTALL & RUN ON AWS
+- Clone/Download this repo
+- Put everything in a zip file
+- Point your lambda function code to this zip file (or upload it to s3, provide the link)
+- Set the lambda handler box to 'process_earthnetworks_v01.hander'
+- Set the lambda runtime to Node.js 8.1
+- Create a lambda trigger, using the s3 bucket of your choice.
+- Upload an example JSON file from test_json_files\ into the s3 bucket.
+- Check https://dweet.io/get/latest/dweet/for/PINLightningReport for latest processing results,
+			dweet.io data is deleted after 24hrs.
+
+---------------------------------------------------------------------------------------------
 ### DEPENDENCIES 
 - node.js 8.10 with below packages:
 - turf (use 'npm install turf') - http://turfjs.org
@@ -35,8 +47,7 @@ are approximate.
 		number of coordinate pairs, to speed up processing. Some boundaries may be inaccurate,
 		but overall should be fit for purpose.
  - Check the Amazon Log files for console output.
- - Check https://dweet.io/get/latest/dweet/for/PINLightningReport for latest processing results,
-			dweet.io data is deleted after 24hrs.
+
 
 			
 ---------------------------------------------------------------------------------------------
