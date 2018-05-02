@@ -135,7 +135,7 @@ exports.handler = function(event, context, callback) {
 					//console.log(intersection);
 					//console.log(intersection.geometry.coordinates);
 					cntIntersect += 1
-				}
+				} 
 			}
 			console.log("Completed analysis of " + String(i) + " communes.");
 			if (cntIntersect == 0) {

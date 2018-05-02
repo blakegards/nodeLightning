@@ -97,9 +97,7 @@ var polygons = {
 
 var intersection = turf.intersect(poly1, poly2);
 
-//=polygons
 
-//=intersection
 ```
 **Returns** `Feature.<Polygon>,Feature.<MultiLineString>`, if `poly1` and `poly2` overlap, returns a Polygon feature representing the area they overlap; if `poly1` and `poly2` do not overlap, returns `undefined`; if `poly1` and `poly2` share a border, a MultiLineString of the locations where their borders are shared
 
