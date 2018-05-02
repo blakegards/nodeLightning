@@ -1,13 +1,13 @@
 # nodeLightning
 
-//*********************************************************************************************
-### Dependencies 
+---------------------------------------------------------------------------------------------
+### DEPENDENCIES 
 - node.js 8.10 with below packages:
 - turf (use 'npm install turf') - http://turfjs.org
 - xml2js (use 'npm install xml2js') 
 - dweetio (use 'npm install node-dweetio')
 ---------------------------------------------------------------------------------------------
-### About
+### ABOUT
  1. Reads in Earth Networks JSON file and reformats to a JSON object, which can be
  		used with the Turf javascript library.
  2. Overlays this layer with the existing Cambodia Communes dataset (JSON format)
@@ -39,6 +39,8 @@ are approximate.
 ---------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------
 			
+## Introduction to turf.js 
+
 Find the intersection of two features.
 
 Default setup is for Cambodia Commune Polygon *vs* Earth Networks JSON Stormfront data.
