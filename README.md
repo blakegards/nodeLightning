@@ -1,8 +1,43 @@
-#nodeLightning
+##nodeLightning
 
-find the intersection of two features.
+//*********************************************************************************************
+//*********************************************************************************************
+// Dependencies - node.js 8.10 with below packages:
+//					- turf (use 'npm install turf') - http://turfjs.org
+//					- xml2js (use 'npm install xml2js') 
+//					- dweetio (use 'npm install node-dweetio')
+//---------------------------------------------------------------------------------------------
+// 1. Reads in Earth Networks JSON file and reformats to a JSON object, which can be
+// 		used with the Turf javascript library.
+// 2. Overlays this layer with the existing Cambodia Communes dataset (JSON format)
+// 3. Outputs communes within the storm warning-area polygon (if any!) to a dweet.io web page
+//		results visible for 24hr on dweet.io (there is a character limit of 2000 chars).
+//
+//PARAMETERS------------------
+// CambodiaCommunes - this is a geojson export of the commune shapefile. It has been simplified
+//						to reduce the complexity and length of the geojson files, so boundaries 
+//						are approximate.
+// Inputs - the Amazon Lambda function executes on the event where a JSON file is loaded to the
+//			s3 bucket (configured in Lambda settings). This script expects a JSON file formatted
+//			as per the Earth Networks example file. It contains XML data embedded inside the
+//			JSON file, so this script deals with both JSON and XML to extract the coordinates
+//			of the stormfront.
+//
+//KNOWN ISSUES----------------
+// - Spatial data must be in WGS84 lat/longs. 
+// - The commune spatial data has been generalized to reduce the complexity and therefore
+//		number of coordinate pairs, to speed up processing. Some boundaries may be inaccurate,
+//		but overall should be fit for purpose.
+// - Check the Amazon Log files for console output.
+// - Check https://dweet.io/get/latest/dweet/for/PINLightningReport for latest processing results,
+//			dweet.io data is deleted after 24hrs.
+//*********************************************************************************************
+//*********************************************************************************************
 
-default setup is for Cambodia Commune Polygon *vs* Earth Networks JSON Stormfront data.
+
+Find the intersection of two features.
+
+Default setup is for Cambodia Commune Polygon *vs* Earth Networks JSON Stormfront data.
 
 Uses the turf js engine - https://github.com/Turfjs/turf
 
