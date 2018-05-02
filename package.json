@@ -2,7 +2,7 @@
   "name": "nodelightning",
   "version": "1.0.0",
   "description": "Uses node.js and turf module to analyise GeoJSON and check if a StormCell overlaps the Cambodian commune file. Prints a list of affected communes, if any.",
-  "main": "process_v1.js",
+  "main": "process_earthnetworks_v01.js",
   "dependencies": {
     "async": "^2.6.0",
     "dweetio": "0.0.1",
