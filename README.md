@@ -7,7 +7,8 @@
  3. Overlays this layer with the existing Cambodia Communes dataset (JSON format)
  4. Outputs communes within the storm warning-area polygon (if any!) to a dweet.io web page
 		results visible for 24hr on dweet.io (there is a character limit of 2000 chars).
-		
+ 5. Creates an output js file of the storm area, and uploads to s3. This can be vizualized with the PIN map template.
+ 
 ![overview](https://raw.githubusercontent.com/blakegards/nodeLightning/master/overview.png)
 ---------------------------------------------------------------------------------------------
 ### HOW TO INSTALL & RUN ON AWS
