@@ -10,7 +10,8 @@
 // 2. Overlays this layer with the existing Cambodia Communes dataset (JSON format)
 // 3. Outputs communes within the storm warning-area polygon (if any!) to a dweet.io web page
 //		results visible for 24hr on dweet.io (there is a character limit of 2000 chars).
-//
+// 4. Also outputs a js parameter to the s3 bucket. This is visible on the sample  PIN webmap.
+//		it is hardcoded to https://s3-ap-southeast-1.amazonaws.com/gis-earthnetworks/stormWarningArea.js
 //PARAMETERS------------------
 // CambodiaCommunes - this is a geojson export of the commune shapefile. It has been simplified
 //						to reduce the complexity and length of the geojson files, so boundaries 
@@ -115,6 +116,9 @@ async.waterfall([
 
 		//call function to perform the intersection.	
 		process(ENWarningPoly);
+		//function to export the polygon JSON as a javascript object, and upload to s3
+		//it can then be consumed by the webmap.
+		outputStormWarning(ENWarningPoly);
 	}
 		], 
 		
@@ -171,5 +175,16 @@ function process(ENWarningPoly) {
 			})
 		}
 
+}
+
+function outputStormWarning(warning_area) {
+		upload_path = '/tmp/stormWarningArea.js'
+		warning_area_string = "var stormArea = " + JSON.stringify(warning_area); + ";"
+		var params = {Bucket: 'gis-earthnetworks', Key: 'stormWarningArea.js', Body: warning_area_string, ACL: 'public-read'};
+		s3.upload(params, function(err, data) {
+		console.log(err, data);
+});
+
+	
 };
 }
